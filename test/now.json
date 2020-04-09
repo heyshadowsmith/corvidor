@@ -1,9 +1,0 @@
-{
-  "version": 2,
-  "builds": [
-    { "src": "/.framework/lambdas/routes.js", "use": "@now/node" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/.framework/lambdas/routes.js" }
-  ]
-}

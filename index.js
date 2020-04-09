@@ -2,7 +2,7 @@
 const ncp = require('ncp').ncp
 const cwd = process.cwd()
  
-ncp('config', cwd, (error) => {
+ncp('./config', cwd, (error) => {
 
  if (error) {
    return console.error(error)
