@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="has-background-light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self Documenting API Docs</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+</head>
+<body>
+  <div style="padding: 20px 0;" id="docs">
+    <div class="container">
+      <h1 class="title">API Documentation</h1>
+      <div class="box" v-for="(route, index) in routes" :key="index">
+        <h2 class="is-size-4 has-text-weight-semibold">{{ route.name }}</h2>
+        <p style="margin-bottom: 15px;">{{ route.description }}</p>
+        <div class="control">
+          <div class="tags has-addons">
+            <span class="tag is-dark">{{ route.method }}</span>
+            <span class="tag">{{ base }}/api{{ route.path }}</span>
+          </div>
+        </div>
+        <div style="margin-top: 15px;" v-if="route.queries.length > 0">
+          <h3 style="margin-bottom: 8px;" class="is-size-5 has-text-weight-semibold">Query Parameters</h3>
+          <div class="table-container">
+            <table class="table is-bordered is-striped is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Query</th>
+                  <th>Description</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(query, index) in route.queries">
+                  <th>{{ query.name }}</th>
+                  <td>{{ query.description }}</td>
+                  <td>{{ query.example }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el: '#docs',
+      data: {
+        base: `${window.location.protocol}//${window.location.host}`,
+        routes: []
+      },
+      created() {
+        this.getRoutes()
+      },
+      methods: {
+        async getRoutes() {
+          const response = await axios.get(`${window.location.protocol}//${window.location.host}/docs`)
+          this.routes = response.data
+        }
+      }
+    })
+  </script>
+</body>
+</html>
