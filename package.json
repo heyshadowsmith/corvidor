@@ -1,6 +1,6 @@
 {
   "name": "corvidor",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Corvidor is a simple API framework used to build small serverless Express APIs for Zeit Now with auto-generated documentation.",
   "main": "index.js",
   "bin": "index.js",
@@ -25,6 +25,9 @@
   },
   "homepage": "https://github.com/heyshadowsmith/corvidor#readme",
   "dependencies": {
+    "commander": "^5.0.0",
+    "inquirer": "^7.1.0",
+    "lodash": "^4.17.15",
     "ncp": "^2.0.0"
   }
 }
