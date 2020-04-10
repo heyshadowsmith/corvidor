@@ -3,7 +3,7 @@ const path = require('path')
 const ncp = require('ncp').ncp
 const cwd = process.cwd()
  
-ncp(path.join(__dirname, 'config'), 'test', (error) => {
+ncp(path.join(__dirname, 'config'), cwd, (error) => {
 
  if (error) {
    return console.error(error)
