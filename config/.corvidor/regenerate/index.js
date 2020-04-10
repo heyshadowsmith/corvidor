@@ -1,5 +1,5 @@
 const chokidar = require('chokidar')
-const watcher = chokidar.watch('api', {ignored: /[\/\\]\./, persistent: true})
+const watcher = chokidar.watch('routes', {ignored: /[\/\\]\./, persistent: true})
 const generate = require('./generate')
 
 function regenerate() {

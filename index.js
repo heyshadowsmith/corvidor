@@ -8,7 +8,7 @@ const ncp = require('ncp').ncp
 const cwd = process.cwd()
 
 program
-  .version('1.0.6')
+  .version('1.0.7')
   .description('Corvidor is used to easily get a serverless API project up-and-running.')
 
 program
