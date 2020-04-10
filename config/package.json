@@ -4,8 +4,8 @@
   "description": "Newly created Corvidor API",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run generate && nodemon .framework",
-    "generate": "node .framework/regenerate/generate"
+    "dev": "npm run generate && nodemon .corvidor",
+    "generate": "node .corvidor/regenerate/generate"
   },
   "author": "Shadow Smith",
   "license": "MIT",

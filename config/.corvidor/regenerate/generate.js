@@ -12,7 +12,7 @@ function generate() {
       requires =  `${requires}\nconst ${fileName} = require('../../routes/${fileName}')`
     })
   
-    fs.writeFile('.framework/api/index.js', 
+    fs.writeFile('.corvidor/api/index.js', 
     `${requires}\n\nmodule.exports = [${files}]`, (error) => {
       if (error) {
         console.log(error)
