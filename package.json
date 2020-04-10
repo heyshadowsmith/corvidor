@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/heyshadowsmith/corvidor#readme",
   "dependencies": {
+    "fs-extra": "^9.0.0",
     "inquirer": "^7.1.0",
     "ncp": "^2.0.0"
   }
