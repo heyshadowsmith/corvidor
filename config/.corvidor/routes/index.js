@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const path = require('path')
 const cors = require('cors')
+const config = require('../corvidor.json')
 
 // Require HTTP request method routes
 const routes = require('../api')
@@ -38,7 +39,11 @@ if (routes) {
 
 // Make Docs API GET Route
 router.get('/docs-data', (req, res) => {
-  res.send(routes)
+  res.send({
+    name: config.name,
+    description: config.description,
+    routes
+  })
 })
 
 // Make Docs

@@ -11,8 +11,9 @@
 <body>
   <div style="padding: 20px 0;" id="docs">
     <div class="container">
-      <h1 class="title">API Documentation</h1>
-      <div class="box" v-for="(route, index) in routes" :key="index">
+      <h1 class="title">{{ api.name }} Documentation</h1>
+      <h2 class="subtitle">{{ api.description }}</h2>
+      <div class="box" v-for="(route, index) in api.routes" :key="index">
         <h2 class="is-size-4 has-text-weight-semibold">{{ route.name }}</h2>
         <p style="margin-bottom: 15px;">{{ route.description }}</p>
         <div class="control">
@@ -50,15 +51,15 @@
       el: '#docs',
       data: {
         base: `${window.location.protocol}//${window.location.host}`,
-        routes: []
+        api: []
       },
       created() {
-        this.getRoutes()
+        this.getAPI()
       },
       methods: {
-        async getRoutes() {
-          const response = await axios.get(`${window.location.protocol}//${window.location.host}/docs-data`)
-          this.routes = response.data
+        async getAPI() {
+          const response = await axios.get(`${this.base}/docs-data`)
+          this.api = response.data
         }
       }
     })
