@@ -19,7 +19,7 @@ program
   .action(() => {
 
     prompt([
-      { type: 'confirm', message: "Install your API in this current directory?", default: false, name: "location" },
+      { type: 'confirm', message: "Install your API in your current directory?", default: false, name: "location" },
       { type: 'input', message: "What's the name of your API?", name: "name" },
       { type: 'input', message: "Describe your API.", name: "description" },
       { type: 'input', message: "What's your name?", name: 'author' }
@@ -36,7 +36,9 @@ program
           
           generatePackageJson(directory, description, author, cwd)
 
-          console.log(`${name} succesfully created.`)
+          console.log(`${name} succesfully created in your current directory.`)
+          console.log(`npm i && npm run dev`)
+
         })
       } else {
         ncp(path.join(__dirname, 'config'), `${cwd}/${directory}`, (error) => {
@@ -47,8 +49,7 @@ program
 
           generatePackageJson(directory, description, author, `${cwd}/${directory}`)
          
-          console.log(`${name} has been succesfully created in ${directory}.`)
-         
+          console.log(`\n${name} has been succesfully created.\n\ncd ${directory} && npm i && npm run dev`)
         })
       }
     })
@@ -60,14 +61,14 @@ program
   .description('Create a new Corvidor API route.')
   .action(() => {
     prompt([
-      { type: 'input', message: "What's the name of this API route?", name: "name" },
-      { type: 'input', message: "Describe this API route.", name: "description" },
-      { type: 'list', message: "Pick the API route's method:", name: 'method', choices: [
+      { type: 'input', message: "What's the name of your new API route?", name: "name" },
+      { type: 'input', message: "Describe your API route.", name: "description" },
+      { type: 'list', message: "Pick your API route's method:", name: 'method', choices: [
         'GET',
         'POST',
         'DELETE'
       ]},
-      { type: 'input', message: "What's the API route's path?", name: 'path' }
+      { type: 'input', message: "What's your API route's path?", name: 'path' }
     ])
     .then(({ name, description, method, path }) => {
       const content = `module.exports = {\n\tname: '${name}',\n\tdescription: '${description}',\n\tmethod: '${method}',\n\tpath: '${path}',\n\tqueries: [],\n\tlogic(req) {}\n}`
@@ -78,7 +79,7 @@ program
         console.log(`Corvidor API route and ${fileName} file successfully created in routes.`)
       }
       catch(error) {
-        console.log('Hmmm... this failed. Be sure you are in the root of your project before running corvidor create-route.')
+        console.log('Hmmm... this failed. Be sure you are in the root of your project before running "crvdr create-route".')
       }
     })
   })
