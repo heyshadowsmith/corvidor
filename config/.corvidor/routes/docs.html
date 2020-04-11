@@ -18,7 +18,7 @@
         <div class="control">
           <div class="tags has-addons">
             <span class="tag is-dark">{{ route.method }}</span>
-            <span class="tag">{{ base }}/api{{ route.path }}</span>
+            <span class="tag">{{ base }}{{ route.path }}</span>
           </div>
         </div>
         <div style="margin-top: 15px;" v-if="route.queries.length > 0">

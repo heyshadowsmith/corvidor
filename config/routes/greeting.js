@@ -7,7 +7,7 @@ module.exports = {
     {
       name: 'name',
       description: 'By providing a name, the greeting will be customized.',
-      example: ''
+      example: '?name=Corvidor'
     }
   ],
   logic(req) {

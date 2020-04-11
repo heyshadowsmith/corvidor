@@ -10,7 +10,7 @@ const generatePackageJson = require('./generators/packageJson')
 const generateReadme = require('./generators/readme')
 
 program
-  .version('1.0.1')
+  .version('1.0.2')
   .description('Corvidor is used to easily get a serverless API project up-and-running.')
 
 program
