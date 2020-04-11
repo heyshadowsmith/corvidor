@@ -1,6 +1,6 @@
 {
-  "name": "corvidor",
-  "version": "1.0.8",
+  "name": "crvdr",
+  "version": "1.0.0",
   "description": "Corvidor is a simple API framework used to build small serverless Express APIs for Zeit Now with auto-generated documentation.",
   "main": "index.js",
   "bin": "index.js",

@@ -9,7 +9,7 @@ const cwd = process.cwd()
 const generatePackageJson = require('./generators/packageJson')
 
 program
-  .version('1.0.8')
+  .version('1.0.0')
   .description('Corvidor is used to easily get a serverless API project up-and-running.')
 
 program
@@ -25,7 +25,7 @@ program
       { type: 'input', message: "What's your name?", name: 'author' }
     ])
     .then(({ location, name, description, author }) => {
-      const directory = name.toLowerCase().replace(' ', '-')
+      const directory = name.toLowerCase().split(' ').join('-')
 
       if (location) {
         ncp(path.join(__dirname, 'config'), cwd, (error) => {
@@ -47,7 +47,7 @@ program
 
           generatePackageJson(directory, description, author, `${cwd}/${directory}`)
          
-          console.log(`${name} has been succesfully created in ${name}.`)
+          console.log(`${name} has been succesfully created in ${directory}.`)
          
         })
       }
