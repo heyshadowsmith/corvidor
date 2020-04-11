@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "/.corvidor/lambdas/routes.js", "use": "@now/node" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/.corvidor/lambdas/routes.js" }
+  ]
+}

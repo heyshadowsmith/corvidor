@@ -6,37 +6,52 @@ const { writeFileSync } = require('fs')
 const path = require('path')
 const ncp = require('ncp').ncp
 const cwd = process.cwd()
+const generatePackageJson = require('./generators/packageJson')
 
 program
   .version('1.0.7')
   .description('Corvidor is used to easily get a serverless API project up-and-running.')
 
 program
-  .command('create-api [name]')
+  .command('create-api')
   .alias('api')
-  .description('Scaffold a Corvidor API project.')
-  .action(name => {
-    if (name) {
-      ncp(path.join(__dirname, 'config'), `${cwd}/${name}`, (error) => {
+  .description('Scaffold a Corvidor API.')
+  .action(() => {
 
-        if (error) {
-          return console.error(error)
-        }
-       
-        console.log(`Corvidor API succesfully created in ${name}.`)
-       
-      })
-    } else {
-      ncp(path.join(__dirname, 'config'), cwd, (error) => {
+    prompt([
+      { type: 'confirm', message: "Install your API in this current directory?", default: false, name: "location" },
+      { type: 'input', message: "What's the name of your API?", name: "name" },
+      { type: 'input', message: "Describe your API.", name: "description" },
+      { type: 'input', message: "What's your name?", name: 'author' }
+    ])
+    .then(({ location, name, description, author }) => {
+      const directory = name.toLowerCase().replace(' ', '-')
 
-        if (error) {
-          return console.error(error)
-        }
-       
-        console.log('Corvidor API succesfully created.')
-       
-      })
-    }
+      if (location) {
+        ncp(path.join(__dirname, 'config'), cwd, (error) => {
+          
+          if (error) {
+            return console.error(error)
+          }
+          
+          generatePackageJson(directory, description, author, cwd)
+
+          console.log(`${name} succesfully created.`)
+        })
+      } else {
+        ncp(path.join(__dirname, 'config'), `${cwd}/${directory}`, (error) => {
+
+          if (error) {
+            return console.error(error)
+          }
+
+          generatePackageJson(directory, description, author, `${cwd}/${directory}`)
+         
+          console.log(`${name} has been succesfully created in ${name}.`)
+         
+        })
+      }
+    })
   })
 
   program
@@ -69,3 +84,4 @@ program
   })
 
 program.parse(process.argv)
+

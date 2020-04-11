@@ -1,14 +1,12 @@
 {
-  "name": "corvidor-api",
+  "name": "super-api",
   "version": "1.0.0",
-  "description": "Newly created Corvidor API",
-  "main": "index.js",
+  "description": "The API is freaking awesome",
   "scripts": {
     "dev": "npm run generate && nodemon .corvidor",
     "generate": "node .corvidor/regenerate/generate"
   },
-  "author": "Shadow Smith",
-  "license": "MIT",
+  "author": "John Smith",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1"

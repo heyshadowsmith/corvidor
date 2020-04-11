@@ -5,8 +5,7 @@
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
-    "dev": "nodemon config",
-    "start": "node index && npm i"
+    "start": "node index"
   },
   "repository": {
     "type": "git",
