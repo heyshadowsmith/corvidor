@@ -9,7 +9,7 @@ const cwd = process.cwd()
 const generatePackageJson = require('./generators/packageJson')
 
 program
-  .version('1.0.7')
+  .version('1.0.8')
   .description('Corvidor is used to easily get a serverless API project up-and-running.')
 
 program
