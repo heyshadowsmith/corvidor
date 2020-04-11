@@ -57,7 +57,7 @@
       },
       methods: {
         async getRoutes() {
-          const response = await axios.get(`${window.location.protocol}//${window.location.host}/docs`)
+          const response = await axios.get(`${window.location.protocol}//${window.location.host}/docs-data`)
           this.routes = response.data
         }
       }

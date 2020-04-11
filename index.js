@@ -7,9 +7,10 @@ const path = require('path')
 const ncp = require('ncp').ncp
 const cwd = process.cwd()
 const generatePackageJson = require('./generators/packageJson')
+const generateReadme = require('./generators/readme')
 
 program
-  .version('1.0.0')
+  .version('1.0.1')
   .description('Corvidor is used to easily get a serverless API project up-and-running.')
 
 program
@@ -35,9 +36,9 @@ program
           }
           
           generatePackageJson(directory, description, author, cwd)
+          generateReadme(name, description, cwd)
 
-          console.log(`${name} succesfully created in your current directory.`)
-          console.log(`npm i && npm run dev`)
+          console.log(`\n${name} has been succesfully created in your current directory.\n\ncd ${directory} && npm i && npm run dev`)
 
         })
       } else {
@@ -48,6 +49,7 @@ program
           }
 
           generatePackageJson(directory, description, author, `${cwd}/${directory}`)
+          generateReadme(name, description, `${cwd}/${directory}`)
          
           console.log(`\n${name} has been succesfully created.\n\ncd ${directory} && npm i && npm run dev`)
         })

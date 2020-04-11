@@ -15,19 +15,19 @@ if (routes) {
   routes.forEach(route => {
 
     if (route.method === 'GET') {
-      router.get(`/api${route.path}`, (req, res) => {
+      router.get(route.path, (req, res) => {
         res.send(route.logic(req))
       })
     }
 
     if (route.method === 'POST') {
-      router.post(`/api${route.path}`, (req, res) => {
+      router.post(route.path, (req, res) => {
         res.send(route.logic(req))
       })
     }
 
     if (route.method === 'DELETE') {
-      router.delete(`/api${route.path}`, (req, res) => {
+      router.delete(route.path, (req, res) => {
         res.send(route.logic(req))
       })
     }
@@ -37,12 +37,12 @@ if (routes) {
 }
 
 // Make Docs API GET Route
-router.get('/docs', (req, res) => {
+router.get('/docs-data', (req, res) => {
   res.send(routes)
 })
 
 // Make Docs
-router.get('/', (req, res) => {
+router.get('/docs', (req, res) => {
   res.sendFile(path.join(__dirname + '/docs.html'))
 })
 
