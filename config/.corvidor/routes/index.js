@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const path = require('path')
 const cors = require('cors')
-const config = require('../corvidor.json')
+const config = require('../../corvidor.json')
 
 // Require HTTP request method routes
 const routes = require('../api')
@@ -17,19 +17,22 @@ if (routes) {
 
     if (route.method === 'GET') {
       router.get(route.path, (req, res) => {
-        res.send(route.logic(req))
+        const { code, data } = route.logic(req)
+        res.status(code).send(data)
       })
     }
 
     if (route.method === 'POST') {
       router.post(route.path, (req, res) => {
-        res.send(route.logic(req))
+        const { code, data } = route.logic(req)
+        res.status(code).send(data)
       })
     }
 
     if (route.method === 'DELETE') {
       router.delete(route.path, (req, res) => {
-        res.send(route.logic(req))
+        const { code, data } = route.logic(req)
+        res.status(code).send(data)
       })
     }
 

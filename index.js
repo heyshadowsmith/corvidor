@@ -11,7 +11,7 @@ const generateReadme = require('./generators/readme')
 const generateCorvidorJson = require('./generators/corvidorJson')
 
 program
-  .version('1.0.3')
+  .version('1.0.4')
   .description('Corvidor is used to easily get a serverless API project up-and-running.')
 
 program

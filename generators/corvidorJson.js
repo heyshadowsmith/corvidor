@@ -8,7 +8,7 @@ function generateCorvidorJson(name, description, author, path) {
   "author": "${author}"
 }`
 
-  writeFileSync(`${path}/.corvidor/corvidor.json`, content)
+  writeFileSync(`${path}/corvidor.json`, content)
 
 }
 

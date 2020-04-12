@@ -12,9 +12,15 @@ module.exports = {
   ],
   logic(req) {
     if (req.query.name) {
-      return `Hello, ${req.query.name}`
+      return {
+        code: 200,
+        data: `Hello, ${req.query.name}`
+      }
     }
 
-    return 'Hello world'
+    return {
+      code: 200,
+      data: 'Hello world'
+    }
   }
 }
